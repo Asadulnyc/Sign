@@ -9,7 +9,9 @@ public class Sign
     }
     public int numberOfLines()
     {
-        return message.length() / width + 1;
+        int lines = message.length() / width;
+        if(message.length() % width ==0) return lines;
+        return lines + 1;
     }
     public String getLines()
     {
@@ -19,6 +21,9 @@ public class Sign
         {
             s+= message.substring(i,i+1);
             i++;
+            if (i%width == 0 && i != message.length()) s += ";";
         }
+        if(message.length() == 0) return null;
+        return s;
     }
 }
